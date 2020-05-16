@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -36,6 +37,12 @@ public class Course {
 	@OneToMany(mappedBy="course"/* by default is LAZY, fetch = FetchType.EAGER*/)
 	private List<Review> reviews = new ArrayList<>();
 	
+	// Many Couses To Many Students
+	@ManyToMany(mappedBy="courses")  
+	//student is the owning side of the relation between STUDENT and COURSES
+	//dzięki temu 'mappedBy' nie bedzie dwóch tabel join pomiędzy Course i Student (STUDENT_COURSES)
+	private List<Student> students = new ArrayList<>();
+	
 	@UpdateTimestamp
 	private LocalDateTime lastUpdatedDate;
 
@@ -47,6 +54,16 @@ public class Course {
 
 	public Course(String name) {
 		this.name = name;
+	}
+
+	
+	
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void addStudent(Student student) {
+		this.students.add(student);
 	}
 
 	public List<Review> getReviews() {

@@ -27,7 +27,7 @@ public class Student {
 	private Passport passport;
 	
 	// Many Students To Many Courses
-	@ManyToMany
+	@ManyToMany(/*defaultowo LAZY*/  fetch=FetchType.EAGER  )
 	@JoinTable(
 			   name = "STUDENT_COURSE", 
 						joinColumns = @JoinColumn(name = "STUDENT_ID"), 

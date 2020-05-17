@@ -62,7 +62,7 @@ public class Course {
 		return students;
 	}
 
-	public void   Student(Student student) {
+	public void addStudent(Student student) {
 		this.students.add(student);
 	}
 

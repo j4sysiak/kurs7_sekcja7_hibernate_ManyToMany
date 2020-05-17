@@ -70,7 +70,7 @@ public class StudentRepository {
 		//Persistence Context (student++ , passport++)
 	}
 
-	public void insertStudentAndCourse() { //insertHardcodedStudentAndCourse(){
+	public void insertHardcodedStudentAndCourse() {  
 		Student student = new Student("Jack");
 		Course course = new Course("Microservices in 100 Steps");
 		
@@ -82,13 +82,26 @@ public class StudentRepository {
 		em.persist(student);
 	}
 
-//	public void insertStudentAndCourse(Student student, Course course){
-//		//Student student = new Student("Jack");
-//		//Course course = new Course("Microservices in 100 Steps");
-//		student.addCourse(course);
-//		course.addStudent(student);
-//
-//		em.persist(student);
-//		em.persist(course);
-//	}
+	public void insertStudentAndCourse(Student student, Course course){
+		//Student student1 = new Student("Jack");
+		//Course course1 = new Course("Microservices in 100 Steps");
+		student.addCourse(course);
+		course.addStudent(student);
+
+		em.persist(student);
+		em.persist(course);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

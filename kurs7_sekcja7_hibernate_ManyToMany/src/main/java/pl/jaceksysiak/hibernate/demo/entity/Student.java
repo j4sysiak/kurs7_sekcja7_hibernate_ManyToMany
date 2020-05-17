@@ -46,7 +46,7 @@ public class Student {
 		return courses;
 	}
 
-	public void addCourses(Course course) {
+	public void addCourse(Course course) {
 		this.courses.add(course);
 	}
 

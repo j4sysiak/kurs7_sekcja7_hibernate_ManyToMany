@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import pl.jaceksysiak.hibernate.demo.entity.Course;
 import pl.jaceksysiak.hibernate.demo.entity.Passport;
 import pl.jaceksysiak.hibernate.demo.entity.Student;
 
@@ -69,4 +70,25 @@ public class StudentRepository {
 		//Persistence Context (student++ , passport++)
 	}
 
+	public void insertStudentAndCourse() { //insertHardcodedStudentAndCourse(){
+		Student student = new Student("Jack");
+		Course course = new Course("Microservices in 100 Steps");
+		
+		em.persist(student);
+		em.persist(course);
+		
+		student.addCourse(course);
+		course.addStudent(student);
+		em.persist(student);
+	}
+
+//	public void insertStudentAndCourse(Student student, Course course){
+//		//Student student = new Student("Jack");
+//		//Course course = new Course("Microservices in 100 Steps");
+//		student.addCourse(course);
+//		course.addStudent(student);
+//
+//		em.persist(student);
+//		em.persist(course);
+//	}
 }
